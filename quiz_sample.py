@@ -139,7 +139,7 @@ def page_end():
                 f"<div style='text-align: center;'>第{num}問：{value}</div>",
                 unsafe_allow_html=True,
             )
-    ## バルーンを飛ばす
+    ## バルーンを飛ばす!
     st.balloons()
 
 
