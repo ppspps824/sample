@@ -17,27 +17,6 @@ if "page_id" not in st.session_state:
     st.session_state.answers = []
     st.session_state.first = True
 
-    audio_path1 = (
-        "https://drive.google.com/uc?id=1pWcK--FaXhzv1q9TJkzPG54FcSNV_O_a"  # 入力する音声ファイル
-    )
-
-    audio_path2 = (
-        "https://drive.google.com/uc?id=17VJPOVlWlzvwOWvvbFaXlxfMZ8LJJI2d"  # 入力する音声ファイル
-    )
-
-    with urllib.request.urlopen(url=audio_path1) as file1:
-        contents = file1.read()
-
-    audio_str1 = f"data:audio/ogg;base64,{base64.b64encode(contents).decode()}"
-    st.session_state.audio_html1 = f"""
-                    <audio autoplay=True>
-                    <source src="{audio_str1}" type="audio/ogg" autoplay=True>
-                    </audio>
-                """
-    with urllib.request.urlopen(url=audio_path2) as file2:
-        contents = file2.read()
-        audio_str2 = f"data:audio/ogg;base64,{base64.b64encode(contents).decode()}"
-
     st.session_state.audio_html2 = f"""
                     <audio autoplay=True>
                     <source src="{audio_str2}" type="audio/ogg" autoplay=True>
@@ -84,20 +63,6 @@ def page1():
 
     select = st.radio("新郎の名前は？", ["たろう", "じろう", "さぶろう"])
 
-    if not st.session_state.first:
-        if select in ["たろう"]:
-            audio_placeholder.empty()
-            time.sleep(0.5)
-            audio_placeholder.markdown(
-                st.session_state.audio_html1, unsafe_allow_html=True
-            )
-        else:
-            audio_placeholder.empty()
-            time.sleep(0.5)
-            audio_placeholder.markdown(
-                st.session_state.audio_html2, unsafe_allow_html=True
-            )
-
     st.session_state.first = False
 
     st.button("回答", on_click=change_page)
@@ -116,20 +81,6 @@ def page2():
         st.session_state.first = True
 
     select = st.radio("新婦の名前は？", ["はなこ", "ゆうこ", "うめこ"])
-
-    if not st.session_state.first:
-        if select in ["うめこ"]:
-            audio_placeholder.empty()
-            time.sleep(0.5)
-            audio_placeholder.markdown(
-                st.session_state.audio_html1, unsafe_allow_html=True
-            )
-        else:
-            audio_placeholder.empty()
-            time.sleep(0.5)
-            audio_placeholder.markdown(
-                st.session_state.audio_html2, unsafe_allow_html=True
-            )
 
     st.session_state.first = False
 
@@ -150,20 +101,6 @@ def page3():
 
     select = st.radio("新郎の年齢は？", ["20歳", "30歳", "40歳", "50歳"])
 
-    if not st.session_state.first:
-        if select in ["40歳", "50歳"]:
-            audio_placeholder.empty()
-            time.sleep(0.5)
-            audio_placeholder.markdown(
-                st.session_state.audio_html1, unsafe_allow_html=True
-            )
-        else:
-            audio_placeholder.empty()
-            time.sleep(0.5)
-            audio_placeholder.markdown(
-                st.session_state.audio_html2, unsafe_allow_html=True
-            )
-
     st.session_state.first = False
 
     st.button("回答", on_click=change_page)
@@ -183,20 +120,6 @@ def page4():
 
     select = st.radio("新婦の年齢は？", ["20歳", "30歳", "40歳", "50歳"])
 
-    if not st.session_state.first:
-        if select in ["20歳", "30歳"]:
-            audio_placeholder.empty()
-            time.sleep(0.5)
-            audio_placeholder.markdown(
-                st.session_state.audio_html1, unsafe_allow_html=True
-            )
-        else:
-            audio_placeholder.empty()
-            time.sleep(0.5)
-            audio_placeholder.markdown(
-                st.session_state.audio_html2, unsafe_allow_html=True
-            )
-
     st.session_state.first = False
 
     st.button("回答", on_click=change_page)
@@ -215,20 +138,6 @@ def page5():
         st.session_state.first = True
 
     select = st.radio("２人の趣味は？", ["野球", "サッカー", "ピアノ", "卓球", "水泳"])
-
-    if not st.session_state.first:
-        if select in ["野球", "サッカー", "ピアノ"]:
-            audio_placeholder.empty()
-            time.sleep(0.5)
-            audio_placeholder.markdown(
-                st.session_state.audio_html1, unsafe_allow_html=True
-            )
-        else:
-            audio_placeholder.empty()
-            time.sleep(0.5)
-            audio_placeholder.markdown(
-                st.session_state.audio_html2, unsafe_allow_html=True
-            )
 
     st.session_state.first = False
     st.button("回答", on_click=change_page)
