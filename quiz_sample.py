@@ -17,12 +17,6 @@ if "page_id" not in st.session_state:
     st.session_state.answers = []
     st.session_state.first = True
 
-    st.session_state.audio_html2 = f"""
-                    <audio autoplay=True>
-                    <source src="{audio_str2}" type="audio/ogg" autoplay=True>
-                    </audio>
-                """
-
 
 # 各種メニューの非表示設定
 hide_menu_style = """
